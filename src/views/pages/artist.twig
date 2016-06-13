@@ -1,0 +1,47 @@
+{% include 'partials/header.twig' %}
+
+{% set isEmpty = artist is empty %}
+
+{% set hasCover = not isEmpty and artist.images is defined and artist.images is not empty %}
+{% set cover = hasCover ? artist.images[0].url %}
+{% set html = cover is empty ? '"' : 'is-cover" style="background-image: url(' ~ cover|escape ~ ')"' %}
+
+<section class="hero {{ isEmpty ? 'is-danger' : (hasCover ? 'has-cover is-dark' : 'is-success') }} is-medium is-bold">
+    <!-- Hero content: will be in the middle -->
+    {% if hasCover %}
+        <div class="hero-cover" style="background-image: url('{{ cover }}')"></div>
+    {% endif %}
+    <!-- Hero content: will be in the middle -->
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            {% if isEmpty %}
+                <h1 class="title is-2">
+                    Error..
+                </h1>
+                <h2 class="subtitle is-4">
+                    Sorry, we couldn't find this artist..
+                </h2>
+            {% else %}
+                <h1 class="title is-2">
+                    {{ artist.name }}
+                </h1>
+                <h2 class="subtitle is-5">
+                    Top 10 tracks
+                </h2>
+            {% endif %}
+        </div>
+    </div>
+
+</section>
+
+{% if not isEmpty %}
+
+    <section class="section">
+        <div class="container">
+            {% include 'lists/track.twig' with {results: artist.tracks} %}
+        </div>
+    </section>
+
+{% endif %}
+
+{% include 'partials/footer.twig' %}

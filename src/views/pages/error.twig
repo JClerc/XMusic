@@ -1,0 +1,29 @@
+{% include 'partials/head.twig' %}
+
+<section class="hero is-danger is-fullheight is-bold">
+    <!-- Hero header: will stick at the top -->
+    <div class="hero-head">
+        {% include 'partials/nav.twig' %}
+    </div>
+
+    <!-- Hero content: will be in the middle -->
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <h1 class="title is-2">
+                Sorry 😓
+            </h1>
+            <h2 class="subtitle is-4">
+                It looks like a bad error happened !
+            </h2>
+            <button class="button is-warning" onclick="history.go(-1)">
+                <span class="icon is-small">
+                    <i class="fa fa-arrow-left"></i>
+                </span>
+                <span>Go back</span>
+            </button>
+        </div>
+    </div>
+
+</section>
+
+{% include 'partials/foot.twig' %}

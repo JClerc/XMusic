@@ -1,0 +1,23 @@
+
+    <nav class="nav">
+        <div class="container">
+            <div class="nav-left">
+                <a class="nav-item" href="{{app.request.basepath}}/">
+                    <span class="title is-4">{{sitename}}</span>
+                </a>
+            </div>
+
+            <span class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </span>
+
+            <div class="nav-right nav-menu">
+                <a class="nav-item {{ title|lower == 'home' ? 'is-active' }}" href="{{ url('home') }}">Home</a>
+                <a class="nav-item {{ title|lower starts with 'track' ? 'is-active' }}" href="{{ url('search_track') }}">Tracks</a>
+                <a class="nav-item {{ title|lower starts with 'album' ? 'is-active' }}" href="{{ url('search_album') }}">Albums</a>
+                <a class="nav-item {{ title|lower starts with 'artist' ? 'is-active' }}" href="{{ url('search_artist') }}">Artists</a>
+            </div>
+        </div>
+    </nav>

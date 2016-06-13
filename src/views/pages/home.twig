@@ -1,0 +1,51 @@
+{% include 'partials/head.twig' %}
+
+<section class="hero is-info is-fullheight is-bold">
+    <!-- Hero header: will stick at the top -->
+    <div class="hero-head">
+        {% include 'partials/nav.twig' %}
+    </div>
+
+    <!-- Hero content: will be in the middle -->
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <h1 class="title is-2">
+                Welcome to {{sitename}}
+            </h1>
+            <h2 class="subtitle is-4">
+                Search, discover and download music in 1 click
+            </h2>
+            <div class="has-text-centered">
+                <a class="button is-success" href="{{ url('search_track') }}">
+                    <span class="icon"> <i class="fa fa-music"></i> </span>
+                    <span>Tracks</span>
+                </a>
+                <a class="button is-success" href="{{ url('search_artist') }}">
+                    <span class="icon"> <i class="fa fa-user"></i> </span>
+                    <span>Artists</span>
+                </a>
+                <a class="button is-success" href="{{ url('search_album') }}">
+                    <span class="icon"> <i class="fa fa-play-circle"></i> </span>
+                    <span>Albums</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero footer: will stick at the bottom -->
+    <div class="hero-foot">
+        <nav class="tabs">
+            <div class="container">
+                <ul>
+                    <li><a>Copyright &copy; {{ 'now'|date('Y') }} {{sitename}}</a></li>
+                    <li><a>Privacy Policy</a></li>
+                    <li><a>Terms of Use</a></li>
+                    <li><a>Legal</a></li>
+                    <li><a>Language</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</section>
+
+{% include 'partials/foot.twig' %}

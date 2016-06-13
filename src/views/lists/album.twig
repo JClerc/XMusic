@@ -1,0 +1,36 @@
+
+    {% for result in results %}
+
+        <div class="box">
+          <article class="media">
+            <div class="media-left">
+              <figure class="image is-64x64">
+                {% if result.images is defined and result.images is not empty %}
+                  <img src="{{ result.images[0].url }}" alt="Image">
+                {% else %}
+                  <img src="https://placeholdit.imgix.net/~text?txtsize=12&amp;txt={{ result.name|url_encode }}&amp;w=128&amp;h=128" alt="Image">
+                {% endif %}
+              </figure>
+            </div>
+            <div class="media-content">
+              <div class="content">
+                <p>
+                  {% if result.name|lower ends with " - single" %}
+                    <span class="title is-5">{{ result.name|slice(0, -9) }}</span>
+                  {% else %}
+                    <span class="title is-5">{{ result.name }}</span>
+                  {% endif %}
+                  <br>Album type: <strong>{{ result.album_type|capitalize }}</strong>
+                </p>
+              </div>
+              <a class="button is-primary is-small" href="{{ app.request.basepath }}/album/{{ result.id|url_encode }}">
+                <span class="icon is-small">
+                  <i class="fa fa-play-circle"></i>
+                </span>
+                <span>See album</span>
+              </a>
+            </div>
+          </article>
+        </div>
+
+    {% endfor %}

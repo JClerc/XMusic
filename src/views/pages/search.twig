@@ -1,0 +1,50 @@
+{% include 'partials/header.twig' %}
+
+{% set isSearch = results is defined and results.items is defined %}
+{% set isEmpty = isSearch and results.items is empty %}
+
+<section class="hero {{ isEmpty ? 'is-danger' : 'is-' ~ theme }} is-medium is-bold">
+    <!-- Hero content: will be in the middle -->
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <h1 class="title is-2">
+                Search in {{ title|lower }}
+            </h1>
+            {% if isEmpty %}
+            <h2 class="subtitle is-4">
+                No results found !
+            </h2>
+            {% endif %}
+            {{ form_start(search) }}
+            
+            <p class="control has-addons has-addons-centered">
+              {{ form_widget(search.query, {attr: {class: 'input is-medium', placeholder: 'Search..'}}) }}
+              {{ form_widget(search.submit, {attr: {class: 'button is-info is-medium'}, label: 'Go !'}) }}
+            </p>
+
+            {{ form_end(search) }}
+        </div>
+    </div>
+
+</section>
+
+{% if isSearch and not isEmpty and mode is defined %}
+
+<section class="section">
+    <div class="container">
+        {% set paginate = {
+            currentFilters: { query: query },
+            currentPage: results.offset // results.limit + 1,
+            paginationPath: 'results_' ~ mode,
+            lastPage: results.total // results.limit + 1,
+            showAlwaysFirstAndLast: true
+        } %}
+        {% include 'partials/pagination.twig' with paginate only %}
+        {% include 'lists/' ~ mode ~ '.twig' with {results: results.items} %}
+        {% include 'partials/pagination.twig' with paginate only %}
+    </div>
+</section>
+
+{% endif %}
+
+{% include 'partials/footer.twig' %}

@@ -1,0 +1,61 @@
+{#
+  Source: http://dev.dbl-a.com/symfony-2-0/symfony2-and-twig-pagination/
+  Updated for my needs to use Bulma template
+#}
+{% spaceless %}
+    {% if lastPage > 1 %}
+
+        {# the number of first and last pages to be displayed #}
+        {% set extremePagesLimit = 2 %}
+
+        {# the number of pages that are displayed around the active page #}
+        {% set nearbyPagesLimit = 2 %}
+
+        <div class="level pagination">
+
+            {% if currentPage > 1 %}
+                <a class="button" href="{{ path(paginationPath, currentFilters|merge({page: currentPage-1})) }}">Previous</a>
+            {% elseif showAlwaysFirstAndLast %}
+                <a class="button is-disabled">Previous</a>
+            {% endif %}
+            
+            <ul>
+
+            {% if currentPage > 1 %}
+                {% for i in range(1, extremePagesLimit) if ( i < currentPage - nearbyPagesLimit ) %}
+                    <li><a class="button" href="{{ path(paginationPath, currentFilters|merge({page: i})) }}">{{ i }}</a></li>
+                {% endfor %}
+
+                {% if extremePagesLimit + 1 < currentPage - nearbyPagesLimit %}
+                    <li><span>...</span></li>
+                {% endif %}
+
+                {% for i in range(currentPage-nearbyPagesLimit, currentPage-1) if ( i > 0 ) %}
+                    <li><a class="button" href="{{ path(paginationPath, currentFilters|merge({page: i})) }}">{{ i }}</a></li>
+                {% endfor %}
+            {% endif %}
+
+            <li><a class="button is-primary" href="{{ path(paginationPath, currentFilters|merge({ page: currentPage })) }}">{{ currentPage }}</a></li>
+
+            {% if currentPage < lastPage %}
+                {% for i in range(currentPage+1, currentPage + nearbyPagesLimit) if ( i <= lastPage ) %}
+                    <li><a class="button" href="{{ path(paginationPath, currentFilters|merge({page: i})) }}">{{ i }}</a></li>
+                {% endfor %}
+
+                {% if  (lastPage - extremePagesLimit) > (currentPage + nearbyPagesLimit) %}
+                    <li><span>...</span></li>
+                {% endif %}
+
+                {% for i in range(lastPage - extremePagesLimit+1, lastPage) if ( i > currentPage + nearbyPagesLimit ) %}
+                    <li><a class="button" href="{{ path(paginationPath, currentFilters|merge({page: i})) }}">{{ i }}</a></li>
+                {% endfor %}
+
+                </ul>
+                <a class="button" href="{{ path(paginationPath, currentFilters|merge({page: currentPage+1})) }}">Next</a>
+            {% elseif showAlwaysFirstAndLast %}
+                </ul>
+                <a class="button is-disabled">Next</a>
+            {% endif %}
+        </div>
+    {% endif %}
+{% endspaceless %}

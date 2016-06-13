@@ -1,0 +1,9 @@
+
+    <script src="{{ asset('vendor/js/jquery') }}"></script>
+    {% for library in libraries|default([]) %}
+        <script src="{{ asset('vendor/js/' ~ library) }}"></script>
+    {% endfor %}
+    <script src="{{ asset('app/js/script') }}"></script>
+    
+</body>
+</html>
