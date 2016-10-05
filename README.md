@@ -1,7 +1,7 @@
 # XMusic
 
 ### Demo
-Try it here: http://xmusic.pew.ovh/
+Try it here: https://xmusic.jclerc.com/
 
 ### Features
 - Search a track, an album or an artist
