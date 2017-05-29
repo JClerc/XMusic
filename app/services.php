@@ -18,7 +18,7 @@ $app->register(new Silex\Provider\ValidatorServiceProvider());
 // -------------------------------
 
 $app->register(new Silex\Provider\TwigServiceProvider(), array(
-    'twig.path' => PHP_ROOT . 'src/views',
+    'twig.path' => PHP_ROOT . 'src/Views',
 ));
 
 
