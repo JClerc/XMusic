@@ -1,25 +1,45 @@
-# XMusic
+<h1 align="center">
+  <img alt="xmusic" width="652" src="https://jclerc.github.io/assets/repos/banner/xmusic.jpg">
+  <br>
+</h1>
 
-### Demo
-Try it here: https://xmusic.jclerc.com/
+<p align="center">
+  <img alt="made for: fun" src="https://jclerc.github.io/assets/static/badges/made-for/fun.svg">
+  <img alt="language: php" src="https://jclerc.github.io/assets/static/badges/language/php.svg">
+  <img alt="made in: 2016" src="https://jclerc.github.io/assets/static/badges/made-in/2016.svg">
+  <br>
+  <sub>Search, discover and download music in one click.</sub>
+</p>
+<br>
 
-### Features
-- Search a track, an album or an artist
-- Play music preview, view clip or download it
-- Search results and musics are cached
-- Based on the Silex micro-framework
+## Features
 
-### API used
-- [**Spotify**](https://www.spotify.com/) to search tracks, albums and artists
-- [**YouTube**](https://www.youtube.com/) to retrieve clip
-- [**YouTubeInMp3**](https://www.youtubeinmp3.com/) for downloading musics
+- [x] Search a track, an album or an artist
+- [x] Play music preview, view clip or download it
+- [x] Use a cache system for search results and tracks
 
-### Requirement
-- PHP 5.6+
-- Apache
+## Stack used
 
-### Getting started
-1. `git clone https://github.com/JClerc/XMusic.git`
-2. `cd XMusic`
-3. `composer install`
-4. Run your web server on `web/`
+- API: `Spotify`, `YouTube`, `YouTubeInMp3`
+- Silex `1.1`
+- PHP `7.0`
+
+## Getting started
+
+#### Requirements
+
+- Apache server with PHP 7+
+
+#### Installation
+
+```sh
+git clone https://github.com/jclerc/xmusic.git
+cd xmusic
+composer install
+```
+
+Then start the webserver in directory `/web/` and you're done.
+
+## Notes
+
+- It doesn't work anymore, due to breaking changes of APIs used
